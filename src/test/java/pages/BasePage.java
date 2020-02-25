@@ -16,6 +16,6 @@ public abstract class BasePage {
         actions = new Actions(driver);
     }
 
-    public abstract void openPage();
+    public abstract MainPage openPage();
     public abstract void isPageOpened();
 }
