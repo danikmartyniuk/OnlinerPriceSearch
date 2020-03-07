@@ -1,18 +1,17 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class MainPage extends BasePage {
 
     private static final By SEARCH_INPUT = By.name("query");
-    private static final By SEARCH_ITEM = By.className("result__wrapper");
-    private static final By CATEGORY_PHOTO = By.className("tiles__preview tiles__preview_position_bottom-center");
+    private static final By CATEGORY_PHOTO = By.id("widget-18");
+    private static final By IFRAME = By.className("modal-iframe");
+    private static final By PRODUCT_PRICE = By.xpath("//a[@class='product__price-value product__price-value_primary']");
 
     public MainPage (WebDriver driver) {
         super(driver);
@@ -31,18 +30,14 @@ public class MainPage extends BasePage {
     }
 
     public void inputItem () {
-//        System.out.print("Введите ваш товар: ");
-//        Scanner s = new Scanner(System.in);
-//        String item = s.nextLine();
-        String item = "Iphone XS";
+        String item = "Iphone 5s";
         driver.findElement(SEARCH_INPUT).sendKeys(item);
     }
 
     public void chooseItem () {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(SEARCH_ITEM));
-        driver.findElement(SEARCH_INPUT).sendKeys(Keys.ENTER);
-        WebElement item = driver.findElement(SEARCH_ITEM);
-        actions.moveToElement(item).perform();
-        item.click();
+        driver.switchTo().frame(driver.findElement(IFRAME));
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        driver.findElements(PRODUCT_PRICE).get(0).click();
     }
+
 }
