@@ -6,12 +6,14 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import steps.MainSteps;
 import steps.PricesSteps;
+import steps.ShopSteps;
 
 public class BaseTest {
 
     WebDriver driver;
     MainSteps mainSteps;
     PricesSteps pricesSteps;
+    ShopSteps shopSteps;
 
     @BeforeClass
     public void setUp() {
@@ -20,6 +22,7 @@ public class BaseTest {
         driver.manage().window().maximize();
         mainSteps = new MainSteps(driver);
         pricesSteps = new PricesSteps(driver);
+        shopSteps = new ShopSteps(driver);
     }
 
     @AfterMethod

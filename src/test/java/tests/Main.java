@@ -8,6 +8,7 @@ public class Main extends BaseTest {
     public void mainApp () {
         mainSteps.findAndClickItem();
         pricesSteps.chooseShop();
+        shopSteps.getShopInfo();
     }
 
 }
