@@ -15,7 +15,7 @@ public class PricesSteps {
     @Step
     public PricesSteps chooseShop() {
         pricesPage.openPage();
-        pricesPage.getTheLowestPrice();
+        pricesPage.openTheShop(pricesPage.getTheLowestPrice());
         return this;
     }
 }

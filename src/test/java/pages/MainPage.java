@@ -30,7 +30,7 @@ public class MainPage extends BasePage {
     }
 
     public void inputItem () {
-        String item = "Iphone 5s";
+        String item = "Iphone 8";
         driver.findElement(SEARCH_INPUT).sendKeys(item);
     }
 

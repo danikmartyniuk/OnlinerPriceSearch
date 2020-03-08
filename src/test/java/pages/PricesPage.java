@@ -4,14 +4,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.Arrays;
-
 public class PricesPage extends BasePage {
 
     private static final By PRICES_BLOCK = By.className("b-offers-list-line-table");
-    private static final By PRICES = By.xpath("//span[@data-bind='html: position.format.priceObject(position.data.position_price.converted['BYN'])]'");
-    private static final By SHOPS = By.xpath("//a[@data-bind='attr: {href: position.shop ? position.shop.html_url : ''}]'");
-    private static final By PRICE_SORT = By.xpath("//span[@data-bind='text: $root.items[type].text]");
+    private static final By SHOP_SORT = By.xpath("//span[@data-bind='text: $root.items[type].text']");
+    private static final By SHOPS = By.xpath("//a[contains(@data-bind,'attr: {href: position.shop ? position.shop.html_url')]");
+    private static final By PRICES = By.xpath("//span[contains(@data-bind,'html: position.format.priceObject(position.data.position_price.converted')]");
 
     public PricesPage(WebDriver driver) {
         super(driver);
@@ -28,13 +26,28 @@ public class PricesPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(PRICES_BLOCK));
     }
 
-    public void getTheLowestPrice() {
-        int size = driver.findElements(PRICES).size();
-        int[] prices = new int[size];
-        for (int i = 0; i < driver.findElements(PRICES).size(); i++) {
-            prices[i] = Integer.parseInt(driver.findElements(PRICES).get(i).getText());
+    public int getTheLowestPrice() {
+        driver.findElements(SHOP_SORT).get(1).click();
+        String[] price = new String[driver.findElements(PRICES).size()];
+        for (int i = 0; i < price.length; i++) {
+            price[i] = driver.findElements(PRICES).get(i).getText();
         }
-        Arrays.sort(prices);
-        driver.findElements(SHOPS).get(prices[0]).click();
+        int[] prices = new int[price.length];
+        for (int i = 0; i < prices.length; i++) {
+            prices[i] = Integer.parseInt(price[i].substring(0, price[i].indexOf(',')));
+        }
+        int min = prices[0];
+        int index = 0;
+        for(int i = 0; i < prices.length; i++) {
+            if(min > prices[i]) {
+                min = prices[i];
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    public void openTheShop(int index) {
+        driver.findElements(SHOPS).get(index).click();
     }
 }
