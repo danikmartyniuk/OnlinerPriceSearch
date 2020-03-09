@@ -15,7 +15,10 @@ public class ShopSteps {
     @Step ("Getting information about the shop")
     public ShopSteps getShopInfo() {
         shopPage.openPage();
+//        shopPage.getShopName();
         shopPage.getRouteLink();
+//        shopPage.getWorkTime();
+//        shopPage.getContacts();
         return this;
     }
 }

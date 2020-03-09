@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -27,24 +28,46 @@ public class PricesPage extends BasePage {
     }
 
     public int getTheLowestPrice() {
-        driver.findElements(SHOP_SORT).get(1).click();
-        String[] price = new String[driver.findElements(PRICES).size()];
-        for (int i = 0; i < price.length; i++) {
-            price[i] = driver.findElements(PRICES).get(i).getText();
-        }
-        int[] prices = new int[price.length];
-        for (int i = 0; i < prices.length; i++) {
-            prices[i] = Integer.parseInt(price[i].substring(0, price[i].indexOf(',')));
-        }
-        int min = prices[0];
-        int index = 0;
-        for(int i = 0; i < prices.length; i++) {
-            if(min > prices[i]) {
-                min = prices[i];
-                index = i;
+
+        try {
+            driver.findElements(SHOP_SORT).get(1).click();
+            String[] price = new String[driver.findElements(PRICES).size()];
+            for (int i = 0; i < price.length; i++) {
+                price[i] = driver.findElements(PRICES).get(i).getText();
             }
+            int[] prices = new int[price.length];
+            for (int i = 0; i < prices.length; i++) {
+                prices[i] = Integer.parseInt(price[i].substring(0, price[i].indexOf(',')));
+            }
+            int min = prices[0];
+            int index = 0;
+            for(int i = 0; i < prices.length; i++) {
+                if(min > prices[i]) {
+                    min = prices[i];
+                    index = i;
+                }
+            }
+            return index;
+        } catch (org.openqa.selenium.StaleElementReferenceException ex) {
+            driver.findElements(SHOP_SORT).get(1).click();
+            String[] price = new String[driver.findElements(PRICES).size()];
+            for (int i = 0; i < price.length; i++) {
+                price[i] = driver.findElements(PRICES).get(i).getText();
+            }
+            int[] prices = new int[price.length];
+            for (int i = 0; i < prices.length; i++) {
+                prices[i] = Integer.parseInt(price[i].substring(0, price[i].indexOf(',')));
+            }
+            int min = prices[0];
+            int index = 0;
+            for(int i = 0; i < prices.length; i++) {
+                if(min > prices[i]) {
+                    min = prices[i];
+                    index = i;
+                }
+            }
+            return index;
         }
-        return index;
     }
 
     public void openTheShop(int index) {
