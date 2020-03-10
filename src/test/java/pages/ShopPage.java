@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.Arrays;
+import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 public class ShopPage extends BasePage {
@@ -40,7 +40,7 @@ public class ShopPage extends BasePage {
         return driver.findElement(SHOP_NAME).getText();
     }
 
-    public void getRouteLink() {
+    public void openMaps() {
         String userAddress = "Чюрлёниса 7";
         String shopAddress = driver.findElement(ADDRESS).getText();
         driver.navigate().to(MAPS_URL);
@@ -53,13 +53,15 @@ public class ShopPage extends BasePage {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         toWhere.sendKeys(Keys.ENTER);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("path")));
-        WebElement setts = driver.findElements(By.xpath("//button[@class='button _view_air _size_medium']")).get(2);
-        actions.moveToElement(setts).perform();
-        setts.click();
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='user-menu-view__menu']")));
-//        driver.findElement(By.xpath("//a[@data-type='share']")).click();
-//        String URL = driver.findElement(By.xpath("//input[@class='input_medium__control']")).getText();
-//        System.out.println(URL);
+    }
+
+    public String copyRoute() {
+        driver.findElements(By.xpath("//button[@class='button _view_air _size_medium']")).get(1).click();
+        driver.findElements(By.xpath("//button[@class='button _view_air _size_medium']")).get(1).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='user-menu-view__menu']")));
+        driver.findElement(By.xpath("//a[@data-type='share']")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("map-share-view__content")));
+        return driver.findElement(By.xpath("//input[@class='input_medium__control']")).getAttribute("value");
     }
 
     public String[] getWorkTime() {

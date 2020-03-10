@@ -2,7 +2,6 @@ package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import steps.MainSteps;
@@ -26,9 +25,9 @@ public class BaseTest {
         shopSteps = new ShopSteps(driver);
     }
 
-//    @AfterMethod
-//    public void close() {
-//        driver.quit();
-//    }
+    @AfterMethod
+    public void close() {
+        driver.quit();
+    }
 
 }
