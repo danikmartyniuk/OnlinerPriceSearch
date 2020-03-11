@@ -40,4 +40,24 @@ public class MainPage extends BasePage {
         driver.findElements(PRODUCT_PRICE).get(0).click();
     }
 
+    public void openPhones() {
+        driver.findElement(By.xpath("//span[@class='catalog-navigation-classifier__item-title']")).click();
+    }
+
+    public void openAuto() {
+
+    }
+
+    public void openRealEstate() {
+
+    }
+
+    public void openCoronaVirus() {
+
+    }
+
+    public void openCurrencies() {
+
+    }
+
 }
