@@ -12,6 +12,11 @@ public class MainPage extends BasePage {
     private static final By CATEGORY_PHOTO = By.id("widget-18");
     private static final By IFRAME = By.className("modal-iframe");
     private static final By PRODUCT_PRICE = By.xpath("//a[@class='product__price-value product__price-value_primary']");
+    private static final By ELECTRONICS = By.xpath("//span[contains(text(),'Электроника')]");
+    private static final By MOBILE_PHONES = By.className("catalog-navigation-list__aside-title");
+    private static final By PHONES = By.className("catalog-navigation-list__dropdown-title");
+    private static final By AUTO = By.className("b-main-navigation__text");
+    private static final String COVID_URL = "https://www.worldometers.info/coronavirus/";
 
     public MainPage (WebDriver driver) {
         super(driver);
@@ -41,19 +46,34 @@ public class MainPage extends BasePage {
     }
 
     public void openPhones() {
-        driver.findElement(By.xpath("//span[@class='catalog-navigation-classifier__item-title']")).click();
+        driver.findElement(ELECTRONICS).click();
+        driver.findElements(MOBILE_PHONES).get(0).click();
+        driver.findElements(PHONES).get(0).click();
     }
 
     public void openAuto() {
-
+        driver.findElements(AUTO).get(2).click();
     }
 
-    public void openRealEstate() {
-
+    public void openRealty() {
+        driver.findElements(AUTO).get(3).click();
     }
 
     public void openCoronaVirus() {
+        driver.navigate().to(COVID_URL);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='tabbable-panel-cases']")));
+    }
 
+    public int getNumberOfCases() {
+        return Integer.parseInt(driver.findElement(By.xpath("//span[@style='color:#aaa']")).getText().replace(",", ""));
+    }
+
+    public String[] getTopThreeCountries() {
+        String[] countries = new String[3];
+        for (int i = 0; i < countries.length; i++) {
+            countries[i] = driver.findElements(By.xpath("//a[@class='mt_a']")).get(i).getText();
+        }
+        return countries;
     }
 
     public void openCurrencies() {
