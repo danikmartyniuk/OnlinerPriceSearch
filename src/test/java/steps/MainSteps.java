@@ -41,11 +41,23 @@ public class MainSteps {
         return this;
     }
 
-    @Step ("Open COVID site")
+    @Step ("Getting COVID information")
     public MainSteps controlCovid() {
         mainPage.openCoronaVirus();
         mainPage.getNumberOfCases();
         mainPage.getTopThreeCountries();
+        return this;
+    }
+
+    @Step ("Getting relevant currencies")
+    public MainSteps getCurr() {
+        mainPage.openCurrencies().getCurrencies();
+        return this;
+    }
+
+    @Step ("Count masks")
+    public MainSteps countMasks() {
+        mainPage.openMasksSite().countMasks();
         return this;
     }
 }

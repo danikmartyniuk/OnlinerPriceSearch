@@ -3,7 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import tests.Main;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class MainPage extends BasePage {
@@ -17,6 +19,8 @@ public class MainPage extends BasePage {
     private static final By PHONES = By.className("catalog-navigation-list__dropdown-title");
     private static final By AUTO = By.className("b-main-navigation__text");
     private static final String COVID_URL = "https://www.worldometers.info/coronavirus/";
+    private static final String CURRENCY_URL = "https://myfin.by/currency/minsk";
+    private static final String MASKS_URL = "https://medcatalog.by/category/maski?page=2";
 
     public MainPage (WebDriver driver) {
         super(driver);
@@ -76,8 +80,25 @@ public class MainPage extends BasePage {
         return countries;
     }
 
-    public void openCurrencies() {
-
+    public MainPage openCurrencies() {
+        driver.navigate().to(CURRENCY_URL);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='g-sidebar_i credit-request lizing-request']")));
+        return this;
     }
 
+    public String[] getCurrencies() {
+        String[] curr = new String[]{driver.findElement(By.xpath("//*[@id=\"workarea\"]/div[1]/div[2]/div/div/div/div/table/tbody/tr[1]/td[2]")).getText(),
+                driver.findElement(By.xpath("//*[@id=\"workarea\"]/div[1]/div[2]/div/div/div/div/table/tbody/tr[2]/td[2]")).getText()};
+        return curr;
+    }
+
+    public MainPage openMasksSite() {
+        driver.navigate().to(MASKS_URL);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[@class='data data--wide data--offers filter-table tableSaved tableID-0']")));
+        return this;
+    }
+
+    public int countMasks() {
+        return Integer.parseInt(driver.findElement(By.tagName("sup")).getText());
+    }
 }

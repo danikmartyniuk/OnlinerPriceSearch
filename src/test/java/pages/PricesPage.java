@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -28,7 +27,6 @@ public class PricesPage extends BasePage {
     }
 
     public int getTheLowestPrice() {
-
         try {
             driver.findElements(SHOP_SORT).get(1).click();
             String[] price = new String[driver.findElements(PRICES).size()];

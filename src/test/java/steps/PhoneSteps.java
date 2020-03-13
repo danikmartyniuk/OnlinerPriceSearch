@@ -6,23 +6,31 @@ import pages.PhonesPage;
 
 public class PhoneSteps {
 
+
     PhonesPage phonesPage;
 
     public PhoneSteps (WebDriver driver) {
         phonesPage = new PhonesPage(driver);
     }
 
-    @Step ("Choose Apple phones")
+    @Step ("Get iPhones average price")
     public PhoneSteps chooseApple() {
         phonesPage.openPage();
-        phonesPage.chooseCompany("apple");
+        phonesPage.chooseCompany("apple").getPrices();
         return this;
     }
 
-    @Step ("Choose Samsung phones")
+    @Step ("Get Samsung average price")
     public PhoneSteps chooseSamsung() {
         phonesPage.openPage();
-        phonesPage.chooseCompany("samsung");
+        phonesPage.chooseCompany("samsung").getPrices();
+        return this;
+    }
+
+    @Step ("Get Samsung average price")
+    public PhoneSteps chooseXiaomi() {
+        phonesPage.openPage();
+        phonesPage.chooseCompany("xiaomi").getPrices();
         return this;
     }
 }
