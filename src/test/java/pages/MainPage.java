@@ -3,9 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import tests.Main;
 
-import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class MainPage extends BasePage {
@@ -100,5 +98,9 @@ public class MainPage extends BasePage {
 
     public int countMasks() {
         return Integer.parseInt(driver.findElement(By.tagName("sup")).getText());
+    }
+
+    public void openBaraholka() {
+        driver.findElements(AUTO).get(5).click();
     }
 }

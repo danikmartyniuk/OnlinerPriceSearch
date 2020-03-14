@@ -20,24 +20,27 @@ public class MainSteps {
         return this;
     }
 
-    @Step ("Control phone prices")
+    @Step ("Open phone prices")
     public MainSteps openPhonePrices() {
-        mainPage.openPage();
-        mainPage.openPhones();
+        mainPage.openPage().openPhones();
+        return this;
+    }
+
+    @Step ("Open baraholka")
+    public MainSteps openBaraholka() {
+        mainPage.openPage().openBaraholka();
         return this;
     }
 
     @Step ("Open Auto")
     public MainSteps openAuto() {
-        mainPage.openPage();
-        mainPage.openAuto();
+        mainPage.openPage().openAuto();
         return this;
     }
 
     @Step ("Open Realty")
     public MainSteps openRealty() {
-        mainPage.openPage();
-        mainPage.openRealty();
+        mainPage.openPage().openRealty();
         return this;
     }
 
