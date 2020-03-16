@@ -13,10 +13,9 @@ public class RealtySteps {
     }
 
     @Step ("Getting realty prices")
-    public RealtySteps getRealtyPrices() {
+    public void getRealtyAds() {
         realtyPage.openPage();
-        realtyPage.getNumOfAds();
-        return this;
+        System.out.println(realtyPage.getNumOfAds() + " of realty ads");
     }
 
 }

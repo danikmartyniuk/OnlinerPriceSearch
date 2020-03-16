@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.sql.Time;
 import java.util.concurrent.TimeUnit;
 
 public class ShopPage extends BasePage {
@@ -68,18 +67,6 @@ public class ShopPage extends BasePage {
             toWhere.sendKeys(Keys.ENTER);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("path")));
         }
-//        String userAddress = "Чюрлёниса 7";
-//        String shopAddress = driver.findElement(ADDRESS).getText();
-//        driver.navigate().to(MAPS_URL);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("route-travel-modes-view")));
-//        WebElement fromWhere = driver.findElements(WHERE).get(0);
-//        fromWhere.sendKeys(userAddress);
-//        fromWhere.sendKeys(Keys.ENTER);
-//        WebElement toWhere = driver.findElements(WHERE).get(1);
-//        toWhere.sendKeys(shopAddress);
-//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-//        toWhere.sendKeys(Keys.ENTER);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("path")));
     }
 
     public String copyRoute() {

@@ -19,8 +19,7 @@ public class BaraholkaSteps {
     }
 
     @Step
-    public BaraholkaSteps getTopCategory() {
-        baraholkaPage.topCategory(baraholkaPage.countAds());
-        return this;
+    public void getTopCategory() {
+        System.out.println(baraholkaPage.topCategory(baraholkaPage.countAds()));
     }
 }

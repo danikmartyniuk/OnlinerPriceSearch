@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.Arrays;
-
 public class PhonesPage extends BasePage {
 
     private static final By PHONE_BLOCK = By.className("schema-product__group");

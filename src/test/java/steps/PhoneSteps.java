@@ -14,23 +14,20 @@ public class PhoneSteps {
     }
 
     @Step ("Get iPhones average price")
-    public PhoneSteps chooseApple() {
+    public void chooseApple() {
         phonesPage.openPage();
-        phonesPage.chooseCompany("apple").getPrices();
-        return this;
+        System.out.println("iPhones average price is " + phonesPage.chooseCompany("apple").getPrices());
     }
 
     @Step ("Get Samsung average price")
-    public PhoneSteps chooseSamsung() {
+    public void chooseSamsung() {
         phonesPage.openPage();
-        phonesPage.chooseCompany("samsung").getPrices();
-        return this;
+        System.out.println("Samsung average price is " + phonesPage.chooseCompany("samsung").getPrices());
     }
 
     @Step ("Get Samsung average price")
-    public PhoneSteps chooseXiaomi() {
+    public void chooseXiaomi() {
         phonesPage.openPage();
-        phonesPage.chooseCompany("xiaomi").getPrices();
-        return this;
+        System.out.println("Xiaomi average price is " + phonesPage.chooseCompany("xiaomi").getPrices());
     }
 }

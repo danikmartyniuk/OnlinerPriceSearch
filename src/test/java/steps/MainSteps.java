@@ -4,6 +4,8 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pages.MainPage;
 
+import java.util.Arrays;
+
 public class MainSteps {
 
     MainPage mainPage;
@@ -45,22 +47,18 @@ public class MainSteps {
     }
 
     @Step ("Getting COVID information")
-    public MainSteps controlCovid() {
+    public void controlCovid() {
         mainPage.openCoronaVirus();
-        mainPage.getNumberOfCases();
-        mainPage.getTopThreeCountries();
-        return this;
+        System.out.println("Number of cases - " + mainPage.getNumberOfCases() + ", top countries are " + Arrays.toString(mainPage.getTopThreeCountries()));
     }
 
     @Step ("Getting relevant currencies")
-    public MainSteps getCurr() {
-        mainPage.openCurrencies().getCurrencies();
-        return this;
+    public void getCurr() {
+        System.out.println(Arrays.toString(mainPage.openCurrencies().getCurrencies()));
     }
 
     @Step ("Count masks")
-    public MainSteps countMasks() {
-        mainPage.openMasksSite().countMasks();
-        return this;
+    public void countMasks() {
+        System.out.println(mainPage.openMasksSite().countMasks() + " masks in supply");
     }
 }
