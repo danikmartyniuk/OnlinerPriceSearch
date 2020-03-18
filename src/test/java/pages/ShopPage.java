@@ -12,10 +12,10 @@ public class ShopPage extends BasePage {
 
     private static final By SHOP_NAME = By.className("sells-title");
     private static final By CONTACTS = By.xpath("//div[contains(@class,'button-style button-style_auxiliary button-style_middle sells-contacts-description')]");
-    private static final By NUMBERS = By.xpath("//p[@class='sells-contacts-itm-link']");
+    private static final By NUMBERS = By.cssSelector(".sells-contacts-itm-link");
     private static final By ADDRESS = By.xpath("//*[@id=\"contacts-minsk\"]/div[2]/ul/li");
     private static final By WORK_TIME = By.xpath("//p[@class='sells-time-work-week-text js-worktime-pseudolink']");
-    private static final By DAY = By.xpath("//span[@class='_day']");
+    private static final By DAY = By.cssSelector("._day");
     private static final By WEATHER = By.className("b-top-navigation-informers__link");
     private static final String MAPS_URL = "https://yandex.by/maps/?ll=26.080757%2C53.116197&mode=routes&rtext=&rtt=auto&z=7";
     private static final By WHERE = By.className("input_waypoint__control");
@@ -25,7 +25,7 @@ public class ShopPage extends BasePage {
     }
 
     @Override
-    public BasePage openPage() {
+    public ShopPage openPage() {
         isPageOpened();
         return this;
     }
@@ -39,9 +39,8 @@ public class ShopPage extends BasePage {
         return driver.findElement(SHOP_NAME).getText();
     }
 
-    public void openMaps() {
+    public ShopPage openMaps(String userAddress) {
         try {
-            String userAddress = "Чюрлёниса 7";
             String shopAddress = driver.findElement(ADDRESS).getText();
             driver.navigate().to(MAPS_URL);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("route-travel-modes-view")));
@@ -54,7 +53,6 @@ public class ShopPage extends BasePage {
             toWhere.sendKeys(Keys.ENTER);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("path")));
         } catch (org.openqa.selenium.StaleElementReferenceException ex) {
-            String userAddress = "Чюрлёниса 7";
             String shopAddress = driver.findElement(ADDRESS).getText();
             driver.navigate().to(MAPS_URL);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("route-travel-modes-view")));
@@ -67,6 +65,7 @@ public class ShopPage extends BasePage {
             toWhere.sendKeys(Keys.ENTER);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("path")));
         }
+        return this;
     }
 
     public String copyRoute() {

@@ -13,12 +13,13 @@ public class MainSteps {
     public MainSteps (WebDriver driver) {
         mainPage = new MainPage(driver);
     }
-
-    @Step ("Input item and then click it")
-    public MainSteps findAndClickItem () {
-        mainPage.openPage();
-        mainPage.inputItem();
-        mainPage.chooseItem();
+    
+    @Step ("Input item {item} and then click its price with index {index}")
+    public MainSteps findAndClickItem (String item, int index) {
+        mainPage
+                .openPage()
+                .inputItem(item)
+                .openItemPrices(index);
         return this;
     }
 

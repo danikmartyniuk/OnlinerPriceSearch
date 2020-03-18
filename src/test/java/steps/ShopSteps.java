@@ -23,8 +23,9 @@ public class ShopSteps {
 
     @Step ("Copy route to the shop")
     public ShopSteps getRoute() {
-        shopPage.openMaps();
-        shopPage.copyRoute();
+        shopPage
+                .openMaps("Чюрлёниса 7")
+                .copyRoute();
         return this;
     }
 }

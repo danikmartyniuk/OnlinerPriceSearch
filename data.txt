@@ -1,0 +1,43 @@
+2020-03-15
+Number of cases - 162377, top countries are [China, Italy, Iran]
+[2.342, 2.61]
+6778 of realty ads
+11229$ is average cars price
+iPhones average price is 1445
+Samsung average price is 1247
+Xiaomi average price is 636
+18 masks in supply
+Мобильные телефоны
+
+2020-03-16
+Number of cases - 179221, top countries are [China, Italy, Iran]
+[2.375, 2.65]
+6795 of realty ads
+15113$ is average cars price
+iPhones average price is 1444
+Samsung average price is 1247
+Xiaomi average price is 573
+18 masks in supply
+Мобильные телефоны
+
+2020-03-17
+Number of cases - 196770, top countries are [China, Italy, Iran]
+[2.39, 2.628]
+6821 of realty ads
+15182$ is average cars price
+iPhones average price is 1439
+Samsung average price is 1247
+Xiaomi average price is 591
+18 masks in supply
+Мобильные телефоны
+
+2020-03-18
+Number of cases - 203613, top countries are [China, Italy, Iran]
+[2.457, 2.693]
+6848 of realty ads
+14789$ is average cars price
+iPhones average price is 1438
+Samsung average price is 1247
+Xiaomi average price is 518
+18 masks in supply
+Мобильные телефоны

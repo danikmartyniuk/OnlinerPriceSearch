@@ -36,15 +36,16 @@ public class MainPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(CATEGORY_PHOTO));
     }
 
-    public void inputItem () {
-        String item = "Iphone 8";
+    public MainPage inputItem (String item) {
         driver.findElement(SEARCH_INPUT).sendKeys(item);
+        return this;
     }
 
-    public void chooseItem () {
+    public MainPage openItemPrices (int index) {
         driver.switchTo().frame(driver.findElement(IFRAME));
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElements(PRODUCT_PRICE).get(0).click();
+        driver.findElements(PRODUCT_PRICE).get(index).click();
+        return this;
     }
 
     public void openPhones() {

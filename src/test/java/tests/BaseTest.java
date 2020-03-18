@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import steps.*;
 
-@Listeners (TestListener.class)
+@Listeners
 public class BaseTest {
 
     WebDriver driver;
@@ -33,7 +33,7 @@ public class BaseTest {
         baraholkaSteps = new BaraholkaSteps(driver);
     }
 
-    @AfterClass
+    @AfterClass (alwaysRun = true)
     public void close() {
         driver.quit();
     }
