@@ -13,8 +13,8 @@ import java.io.IOException;
 
 public class TestListener implements ITestListener {
 
-    WebDriver driver=null;
-    String filePath = "D:\\verstime\\OnlinerPriceSearch\\src\\test\\java\\screenshots";
+    WebDriver driver = null;
+    String filePath = "src/test/java/screenshots";
     @Override
     public void onTestFailure(ITestResult result) {
         System.out.println("***** Error "+result.getName()+" test has failed *****");

@@ -5,9 +5,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 import steps.*;
 
-@Listeners
+@Listeners ({TestListener.class})
 public class BaseTest {
 
     WebDriver driver;

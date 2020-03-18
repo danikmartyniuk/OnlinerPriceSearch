@@ -29,7 +29,8 @@
                     <forkCount>2</forkCount>
                     <reuseForks>true</reuseForks>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.1/aspectjweaver-1.9.1.jar -Xmx256m
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.1/aspectjweaver-1.9.1.jar
+                        -Xmx256m
                     </argLine>
                 </configuration>
                 <dependencies>
@@ -121,5 +122,13 @@
         </dependency>
 
     </dependencies>
+
+    <properties>
+
+        <maven-surefire-plugin.version>2.20.1</maven-surefire-plugin.version>
+        <aspectj.version>1.8.10</aspectj.version>
+        <allure-testng.version>2.6.0</allure-testng.version>
+
+    </properties>
 
 </project>
