@@ -6,8 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.assertEquals;
-
 public class MainPage extends BasePage {
 
     private static final By SEARCH_INPUT = By.name("query");
@@ -102,7 +100,11 @@ public class MainPage extends BasePage {
     }
 
     public void compareRates(double myFin, double onliner) {
-        assertEquals(onliner, myFin,  "The difference is " + Math.abs(onliner - myFin));
+        if (onliner != myFin) {
+            System.out.println("The difference is " + Math.abs(onliner - myFin));
+        } else {
+            System.out.println("The rates are identical");
+        }
     }
 
     public MainPage openMasksSite() {
