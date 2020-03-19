@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import steps.*;
+import utils.CapabilitiesGenerator;
 
 @Listeners ({TestListener.class})
 public class BaseTest {
@@ -22,7 +23,8 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
+        CapabilitiesGenerator.getChromeOptions();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         mainSteps = new MainSteps(driver);
