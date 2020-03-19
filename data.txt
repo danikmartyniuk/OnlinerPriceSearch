@@ -41,3 +41,14 @@ Samsung average price is 1247
 Xiaomi average price is 518
 18 masks in supply
 Мобильные телефоны
+
+2020-03-19
+Number of cases - 239896, top countries are [China, Italy, Iran]
+[2.6, 2.79]
+6967 of realty ads
+11044$ is average cars price
+Samsung average price is 1298
+Xiaomi average price is 504
+iPhones average price is 1541
+18 masks in supply
+Мобильные телефоны
