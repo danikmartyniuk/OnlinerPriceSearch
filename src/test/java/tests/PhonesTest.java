@@ -2,6 +2,7 @@ package tests;
 
 import org.testng.annotations.Test;
 
+@Test (retryAnalyzer = RetryFailedTestCases.class)
 public class PhonesTest extends BaseTest {
 
     @Test(priority = 1, description = "Getting samsung phones average price")
@@ -10,7 +11,7 @@ public class PhonesTest extends BaseTest {
         phoneSteps.chooseSamsung();
     }
 
-    @Test(priority = 3, retryAnalyzer = RetryFailedTestCases.class, description = "Getting apple phones average price")
+    @Test(priority = 3, description = "Getting apple phones average price")
     public void applePrice() {
         mainSteps.openPhonePrices();
         phoneSteps.chooseApple();

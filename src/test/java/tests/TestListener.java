@@ -1,6 +1,6 @@
 package tests;
 
-import org.apache.commons.io.FileUtils;
+import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -8,32 +8,29 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import java.io.File;
-import java.io.IOException;
-
 public class TestListener implements ITestListener {
 
-    WebDriver driver = null;
-    String filePath = "src/test/java/screenshots";
     @Override
-    public void onTestFailure(ITestResult result) {
-        System.out.println("***** Error "+result.getName()+" test has failed *****");
-        String methodName=result.getName().toString().trim();
-        ITestContext context = result.getTestContext();
-        WebDriver driver = (WebDriver)context.getAttribute("driver");
-        takeScreenShot(methodName, driver);
-    }
+    public void onTestFailure(ITestResult iTestResult) {
+        System.out.println("I am in onTestFailure method " + getTestMethodName(iTestResult) + " failed");
+        Object testClass = iTestResult.getInstance();
+        WebDriver driver = ((BaseTest) testClass).getDriver();
 
-    public void takeScreenShot(String methodName, WebDriver driver) {
-        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        //The below method will save the screen shot in d drive with test method name
-        try {
-            FileUtils.copyFile(scrFile, new File(filePath+methodName+".png"));
-            System.out.println("***Placed screen shot in "+filePath+" ***");
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (driver instanceof WebDriver) {
+            System.out.println("Screenshots captured for test case:" + getTestMethodName(iTestResult));
+            saveScreenshotPNG(driver);
         }
     }
+
+    private static String getTestMethodName (ITestResult iTestResult) {
+        return iTestResult.getMethod().getConstructorOrMethod().getName();
+    }
+
+    @Attachment (value = "Page screenshot", type = "image/png")
+    public byte[] saveScreenshotPNG (WebDriver driver) {
+        return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
+    }
+
     public void onFinish(ITestContext context) {}
 
     public void onTestStart(ITestResult result) {   }

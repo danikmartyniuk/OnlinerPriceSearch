@@ -6,6 +6,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.Assert.assertEquals;
+
 public class MainPage extends BasePage {
 
     private static final By SEARCH_INPUT = By.name("query");
@@ -89,6 +91,18 @@ public class MainPage extends BasePage {
         String[] curr = new String[]{driver.findElement(By.xpath("//*[@id=\"workarea\"]/div[1]/div[2]/div/div/div/div/table/tbody/tr[1]/td[2]")).getText(),
                 driver.findElement(By.xpath("//*[@id=\"workarea\"]/div[1]/div[2]/div/div/div/div/table/tbody/tr[2]/td[2]")).getText()};
         return curr;
+    }
+
+    public double getUSDfromMyFin() {
+        return Double.parseDouble(driver.findElement(By.xpath("//*[@id=\"workarea\"]/div[1]/div[2]/div/div/div/div/table/tbody/tr[1]/td[2]")).getText());
+    }
+
+    public double getUSDfromOnliner() {
+        return Double.parseDouble(driver.findElement(By.cssSelector("._u")).getText().replace("$ ","").replace(",", "."));
+    }
+
+    public void compareRates(double myFin, double onliner) {
+        assertEquals(onliner, myFin,  "The difference is " + Math.abs(onliner - myFin));
     }
 
     public MainPage openMasksSite() {

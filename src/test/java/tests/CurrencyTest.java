@@ -9,4 +9,9 @@ public class CurrencyTest extends BaseTest {
         mainSteps.getCurr();
     }
 
+    @Test(description = "Check if there is the right exchange rate on onliner")
+    public void compareRates() {
+        mainSteps.compare();
+    }
+
 }

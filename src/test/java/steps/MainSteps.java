@@ -58,6 +58,11 @@ public class MainSteps {
         System.out.println(Arrays.toString(mainPage.openCurrencies().getCurrencies()));
     }
 
+    @Step ("Comparing exchange rates")
+    public void compare() {
+        mainPage.compareRates(mainPage.openCurrencies().getUSDfromMyFin(), mainPage.openPage().getUSDfromOnliner());
+    }
+
     @Step ("Count masks")
     public void countMasks() {
         System.out.println(mainPage.openMasksSite().countMasks() + " masks in supply");
