@@ -14,7 +14,8 @@ public class CapabilitiesGenerator {
             System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver.exe");
         } else if (os.contains("linux")) {
             System.out.println(("Operational system: " + os + "; Driver path: " + linuxPath));
-            System.setProperty("webdriver.chrome.driver", linuxPath + "/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "src/test/resources/webdrivers/linux/chromedriver");
+            //linuxPath + "/chromedriver"
         } else {
             System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver");
         }
