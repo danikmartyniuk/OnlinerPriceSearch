@@ -29,12 +29,6 @@ public class MainSteps {
         return this;
     }
 
-    @Step ("Open baraholka")
-    public MainSteps openBaraholka() {
-        mainPage.openPage().openBaraholka();
-        return this;
-    }
-
     @Step ("Open Auto")
     public MainSteps openAuto() {
         mainPage.openPage().openAuto();
@@ -63,8 +57,4 @@ public class MainSteps {
         mainPage.compareRates(mainPage.openCurrencies().getUSDfromMyFin(), mainPage.openPage().getUSDfromOnliner());
     }
 
-    @Step ("Count masks")
-    public void countMasks() {
-        System.out.println(mainPage.openMasksSite().countMasks() + " masks in supply");
-    }
 }

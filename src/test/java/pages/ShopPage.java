@@ -18,7 +18,8 @@ public class ShopPage extends BasePage {
     private static final By DAY = By.cssSelector("._day");
     private static final By WEATHER = By.className("b-top-navigation-informers__link");
     private static final String MAPS_URL = "https://yandex.by/maps/?ll=26.080757%2C53.116197&mode=routes&rtext=&rtt=auto&z=7";
-    private static final By WHERE = By.className("input_waypoint__control");
+    private static final By FROM_WHERE = By.xpath("//input[@placeholder='Откуда']");
+    private static final By TO_WHERE = By.xpath("//input[@placeholder='Куда']");
     private static final By MAPS_MENU = By.cssSelector(".user-menu-control");
 
     public ShopPage(WebDriver driver) {
@@ -45,8 +46,8 @@ public class ShopPage extends BasePage {
             String shopAddress = driver.findElement(ADDRESS).getText();
             driver.navigate().to(MAPS_URL);
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".route-travel-modes-view")));
-            driver.findElements(WHERE).get(0).sendKeys(userAddress, Keys.ENTER);
-            WebElement toWhere = driver.findElements(WHERE).get(1);
+            driver.findElement(FROM_WHERE).sendKeys(userAddress, Keys.ENTER);
+            WebElement toWhere = driver.findElement(TO_WHERE);
             toWhere.sendKeys(shopAddress);
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             toWhere.sendKeys(Keys.ENTER);
@@ -54,15 +55,12 @@ public class ShopPage extends BasePage {
         } catch (org.openqa.selenium.StaleElementReferenceException ex) {
             String shopAddress = driver.findElement(ADDRESS).getText();
             driver.navigate().to(MAPS_URL);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("route-travel-modes-view")));
-            WebElement fromWhere = driver.findElements(WHERE).get(0);
-            fromWhere.sendKeys(userAddress);
-            fromWhere.sendKeys(Keys.ENTER);
-            WebElement toWhere = driver.findElements(WHERE).get(1);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".route-travel-modes-view")));
+            driver.findElement(FROM_WHERE).sendKeys(userAddress, Keys.ENTER);
+            WebElement toWhere = driver.findElement(TO_WHERE);
             toWhere.sendKeys(shopAddress);
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
             toWhere.sendKeys(Keys.ENTER);
-            driver.findElements(MAPS_MENU).get(1).click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("path")));
         }
         return this;
@@ -73,7 +71,7 @@ public class ShopPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='user-menu-view__menu']")));
         driver.findElement(By.xpath("//a[@data-type='share']")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("map-share-view__content")));
-        System.out.println(driver.findElement(By.xpath("//input[@class='input_medium__control']")).getAttribute("value"));
+        System.out.println(driver.findElement(By.xpath("//input[@class='input__control']")).getAttribute("value"));
     }
 
     public String[] getWorkTime() {

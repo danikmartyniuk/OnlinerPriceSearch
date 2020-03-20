@@ -19,7 +19,6 @@ public class BaseTest {
     PhoneSteps phoneSteps;
     AutoSteps autoSteps;
     RealtySteps realtySteps;
-    BaraholkaSteps baraholkaSteps;
 
     @BeforeClass
     public void setUp() {
@@ -32,7 +31,6 @@ public class BaseTest {
         phoneSteps = new PhoneSteps(driver);
         autoSteps = new AutoSteps(driver);
         realtySteps = new RealtySteps(driver);
-        baraholkaSteps = new BaraholkaSteps(driver);
     }
 
     @AfterClass (alwaysRun = true)

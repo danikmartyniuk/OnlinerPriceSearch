@@ -8,11 +8,9 @@
     <test name="Test-class test" >
 
         <classes>
-            <class name="tests.BaraholkaTest" />
             <class name="tests.CarTest" />
             <class name="tests.CovidTest" />
             <class name="tests.CurrencyTest" />
-            <class name="tests.MasksTest" />
             <class name="tests.PhonesTest" />
             <class name="tests.RealtyTest" />
             <class name="tests.MainTest" />
