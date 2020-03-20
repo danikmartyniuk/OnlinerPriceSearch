@@ -5,9 +5,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
 import steps.*;
 import utils.CapabilitiesGenerator;
+import utils.TestListener;
 
 @Listeners ({TestListener.class})
 public class BaseTest {

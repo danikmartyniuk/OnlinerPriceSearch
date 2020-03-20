@@ -1,6 +1,7 @@
 package tests;
 
 import org.testng.annotations.Test;
+import utils.RetryFailedTestCases;
 
 public class MainTest extends BaseTest {
 

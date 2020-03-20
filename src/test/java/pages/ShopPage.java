@@ -68,12 +68,12 @@ public class ShopPage extends BasePage {
         return this;
     }
 
-    public String copyRoute() {
+    public void copyRoute() {
         driver.findElements(MAPS_MENU).get(0).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='user-menu-view__menu']")));
         driver.findElement(By.xpath("//a[@data-type='share']")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("map-share-view__content")));
-        return driver.findElement(By.xpath("//input[@class='input_medium__control']")).getAttribute("value");
+        System.out.println(driver.findElement(By.xpath("//input[@class='input_medium__control']")).getAttribute("value"));
     }
 
     public String[] getWorkTime() {
