@@ -20,4 +20,47 @@ public class MainSteps {
         return this;
     }
 
+    @Step ("Open phone prices")
+    public MainSteps openPhonePrices() {
+        mainPage.openPage().openPhones();
+        return this;
+    }
+
+    @Step ("Open baraholka")
+    public MainSteps openBaraholka() {
+        mainPage.openPage().openBaraholka();
+        return this;
+    }
+
+    @Step ("Open Auto")
+    public MainSteps openAuto() {
+        mainPage.openPage().openAuto();
+        return this;
+    }
+
+    @Step ("Open Realty")
+    public MainSteps openRealty() {
+        mainPage.openPage().openRealty();
+        return this;
+    }
+
+    @Step ("Getting COVID information")
+    public MainSteps controlCovid() {
+        mainPage.openCoronaVirus();
+        mainPage.getNumberOfCases();
+        mainPage.getTopThreeCountries();
+        return this;
+    }
+
+    @Step ("Getting relevant currencies")
+    public MainSteps getCurr() {
+        mainPage.openCurrencies().getCurrencies();
+        return this;
+    }
+
+    @Step ("Count masks")
+    public MainSteps countMasks() {
+        mainPage.openMasksSite().countMasks();
+        return this;
+    }
 }

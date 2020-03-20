@@ -2,11 +2,9 @@ package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-import steps.MainSteps;
-import steps.PricesSteps;
-import steps.ShopSteps;
+import steps.*;
 
 public class BaseTest {
 
@@ -14,6 +12,10 @@ public class BaseTest {
     MainSteps mainSteps;
     PricesSteps pricesSteps;
     ShopSteps shopSteps;
+    PhoneSteps phoneSteps;
+    AutoSteps autoSteps;
+    RealtySteps realtySteps;
+    BaraholkaSteps baraholkaSteps;
 
     @BeforeClass
     public void setUp() {
@@ -23,9 +25,13 @@ public class BaseTest {
         mainSteps = new MainSteps(driver);
         pricesSteps = new PricesSteps(driver);
         shopSteps = new ShopSteps(driver);
+        phoneSteps = new PhoneSteps(driver);
+        autoSteps = new AutoSteps(driver);
+        realtySteps = new RealtySteps(driver);
+        baraholkaSteps = new BaraholkaSteps(driver);
     }
 
-    @AfterMethod
+    @AfterClass
     public void close() {
         driver.quit();
     }

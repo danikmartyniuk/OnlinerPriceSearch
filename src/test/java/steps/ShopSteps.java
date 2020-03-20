@@ -18,6 +18,11 @@ public class ShopSteps {
         shopPage.getShopName();
         shopPage.getWorkTime();
         shopPage.getContacts();
+        return this;
+    }
+
+    @Step ("Copy route to the shop")
+    public ShopSteps getRoute() {
         shopPage.openMaps();
         shopPage.copyRoute();
         return this;
