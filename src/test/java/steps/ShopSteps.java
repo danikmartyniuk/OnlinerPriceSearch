@@ -18,8 +18,14 @@ public class ShopSteps {
         shopPage.getShopName();
         shopPage.getWorkTime();
         shopPage.getContacts();
-        shopPage.openMaps();
-        shopPage.copyRoute();
+        return this;
+    }
+
+    @Step ("Copy route to the shop")
+    public ShopSteps getRoute() {
+        shopPage
+                .openMaps("Чюрлёниса 7")
+                .copyRoute();
         return this;
     }
 }

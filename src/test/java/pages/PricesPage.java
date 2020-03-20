@@ -1,7 +1,6 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -27,17 +26,24 @@ public class PricesPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(PRICES_BLOCK));
     }
 
-    public int getTheLowestPrice() {
+    /**
+     * @SHOP_SORT - to sort shops by rating
+     * @p[] - String array of prices
+     * @prices[] - int array of prices
+     * @return index of price
+     * after sorting by rating this method returns the best shop with the lowest price
+     */
 
+    public int getTheLowestPrice() {
         try {
             driver.findElements(SHOP_SORT).get(1).click();
-            String[] price = new String[driver.findElements(PRICES).size()];
-            for (int i = 0; i < price.length; i++) {
-                price[i] = driver.findElements(PRICES).get(i).getText();
+            String[] p = new String[driver.findElements(PRICES).size()];
+            for (int i = 0; i < p.length; i++) {
+                p[i] = driver.findElements(PRICES).get(i).getText();
             }
-            int[] prices = new int[price.length];
+            int[] prices = new int[p.length];
             for (int i = 0; i < prices.length; i++) {
-                prices[i] = Integer.parseInt(price[i].substring(0, price[i].indexOf(',')));
+                prices[i] = Integer.parseInt(p[i].substring(0, p[i].indexOf(',')));
             }
             int min = prices[0];
             int index = 0;
