@@ -107,17 +107,4 @@ public class MainPage extends BasePage {
         }
     }
 
-    public MainPage openMasksSite() {
-        driver.navigate().to(MASKS_URL);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//table[@class='data data--wide data--offers filter-table tableSaved tableID-0']")));
-        return this;
-    }
-
-    public int countMasks() {
-        return Integer.parseInt(driver.findElement(By.tagName("sup")).getText());
-    }
-
-    public void openBaraholka() {
-        driver.findElements(AUTO).get(5).click();
-    }
 }
