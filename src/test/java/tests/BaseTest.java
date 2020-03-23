@@ -25,17 +25,17 @@ public class BaseTest {
 
     OnlinerStats csv;
 
-    @BeforeTest
+    @BeforeClass
     public void createCSV () {
         csv = new OnlinerStats();
     }
 
-    @AfterTest
+    @AfterClass
     public void writeToCSV () {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         LocalDateTime now = LocalDateTime.now();
-        csv.setDate(dtf.format(now) + ";");
-        CSVUtils.writeStatsToCSV("src/test/resources/data.csv", csv);
+        csv.setDate(dtf.format(now));
+        CSVUtils.writeStatsToCSV("data.csv", csv);
     }
 
     @BeforeClass

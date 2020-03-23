@@ -1,9 +1,6 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class PhonesPage extends BasePage {
@@ -56,7 +53,7 @@ public class PhonesPage extends BasePage {
                 sum += pr[i];
             }
             return sum / driver.findElements(PRICES).size();
-        } catch (org.openqa.selenium.StaleElementReferenceException ex) {
+        } catch (StaleElementReferenceException | IndexOutOfBoundsException ex) {
             int len = driver.findElements(PRICES).size();
             int[] pr = new int[len];
             for (int i = 0; i < pr.length; i++) {
