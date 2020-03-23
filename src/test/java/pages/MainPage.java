@@ -62,9 +62,10 @@ public class MainPage extends BasePage {
         driver.findElements(AUTO).get(3).click();
     }
 
-    public void openCoronaVirus() {
+    public MainPage openCoronaVirus() {
         driver.navigate().to(COVID_URL);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='tabbable-panel-cases']")));
+        return this;
     }
 
     public int getNumberOfCases() {

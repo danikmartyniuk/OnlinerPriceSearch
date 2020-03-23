@@ -2,12 +2,15 @@ package tests;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 import steps.*;
+import utils.CSVUtils;
 import utils.CapabilitiesGenerator;
+import utils.OnlinerStats;
 import utils.TestListener;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Listeners ({TestListener.class})
 public class BaseTest {
@@ -19,6 +22,21 @@ public class BaseTest {
     PhoneSteps phoneSteps;
     AutoSteps autoSteps;
     RealtySteps realtySteps;
+
+    OnlinerStats csv;
+
+    @BeforeTest
+    public void createCSV () {
+        csv = new OnlinerStats();
+    }
+
+    @AfterTest
+    public void writeToCSV () {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        csv.setDate(dtf.format(now) + ";");
+        CSVUtils.writeStatsToCSV("src/test/resources/data.csv", csv);
+    }
 
     @BeforeClass
     public void setUp() {
