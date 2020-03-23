@@ -13,9 +13,9 @@ public class AutoSteps {
     }
 
     @Step ("Getting auto prices")
-    public void getAutoPrices() {
+    public int getAutoPrices() {
         autoPage.openPage();
         autoPage.getNumberOfCars();
-        System.out.println(autoPage.getAveragePrice()+ "$ is average cars price");
+        return autoPage.getAveragePrice();
     }
 }

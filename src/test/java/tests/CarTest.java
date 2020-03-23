@@ -8,7 +8,7 @@ public class CarTest extends BaseTest {
     @Test(retryAnalyzer = RetryFailedTestCases.class, description = "Getting automobiles average price")
     public void autoPrices() {
         mainSteps.openAuto();
-        autoSteps.getAutoPrices();
+        csv.setAuto(autoSteps.getAutoPrices());
     }
 
 }

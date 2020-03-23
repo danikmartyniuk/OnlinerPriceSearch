@@ -4,9 +4,9 @@ import org.testng.annotations.Test;
 
 public class CovidTest extends BaseTest {
 
-    @Test(description = "Getting number of COVID cases and top three countries")
+    @Test(description = "Getting number of COVID cases")
     public void covidStats() {
-        mainSteps.controlCovid();
+        csv.setCovid(mainSteps.controlCovid());
     }
 
 }

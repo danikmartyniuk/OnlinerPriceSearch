@@ -7,7 +7,7 @@ public class RealtyTest extends BaseTest {
     @Test(description = "Getting realty number of ads")
     public void realtyPrices() {
         mainSteps.openRealty();
-        realtySteps.getRealtyAds();
+        csv.setEstate(realtySteps.getRealtyAds());
     }
 
 }
