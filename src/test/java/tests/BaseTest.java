@@ -11,6 +11,7 @@ import utils.TestListener;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.concurrent.TimeUnit;
 
 @Listeners ({TestListener.class})
 public class BaseTest {
@@ -26,23 +27,11 @@ public class BaseTest {
     OnlinerStats csv;
 
     @BeforeClass
-    public void createCSV () {
-        csv = new OnlinerStats();
-    }
-
-    @AfterClass
-    public void writeToCSV () {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-        LocalDateTime now = LocalDateTime.now();
-        csv.setDate(dtf.format(now));
-        CSVUtils.writeStatsToCSV("data.csv", csv);
-    }
-
-    @BeforeClass
     public void setUp() {
-        CapabilitiesGenerator.getChromeOptions();
-        driver = new ChromeDriver();
+        csv = new OnlinerStats();
+        driver = new ChromeDriver(CapabilitiesGenerator.getChromeOptions());
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         mainSteps = new MainSteps(driver);
         pricesSteps = new PricesSteps(driver);
         shopSteps = new ShopSteps(driver);
@@ -54,6 +43,10 @@ public class BaseTest {
     @AfterClass (alwaysRun = true)
     public void close() {
         driver.quit();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        csv.setDate(dtf.format(now));
+        CSVUtils.writeStatsToCSV("data.csv", csv);
     }
 
     public WebDriver getDriver() {
