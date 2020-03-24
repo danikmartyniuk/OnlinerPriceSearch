@@ -5,7 +5,7 @@ import utils.RetryFailedTestCases;
 
 public class GetStatsTest extends BaseTest{
 
-    @Test (description = "Get all stats related to financial impact of COVID-19")
+    @Test (description = "Get all stats related to financial impact of COVID-19", retryAnalyzer = RetryFailedTestCases.class)
     public void getStats() {
         mainSteps.openAuto();
         csv.setAuto(autoSteps.getAutoPrices());
