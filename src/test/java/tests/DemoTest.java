@@ -7,7 +7,7 @@ public class DemoTest extends BaseTest {
 
     @Test (description = "Choosing the best shop for item", retryAnalyzer = RetryFailedTestCases.class)
     public void getShop () {
-        mainSteps.findAndClickItem("iPhone XS", 0);
+        mainSteps.findAndClickItem("iPhone 8", 0);
         pricesSteps.chooseShop();
         shopSteps.getShopInfo().getRoute();
     }

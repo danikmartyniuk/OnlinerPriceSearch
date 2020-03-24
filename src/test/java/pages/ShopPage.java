@@ -67,7 +67,7 @@ public class ShopPage extends BasePage {
     }
 
     public void copyRoute() {
-        driver.findElements(MAPS_MENU).get(0).click();
+        //driver.findElements(MAPS_MENU).get(0).click();
         driver.findElements(MAPS_MENU).get(0).click();
         driver.findElements(MAPS_MENU).get(0).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='user-menu-view__menu']")));
